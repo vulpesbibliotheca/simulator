@@ -1,38 +1,32 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+<html lang="pt-br" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Projeto baseado no: https://github.com/vicente-cs/simularacafe-->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Simulador ACAFE</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
 
     <!-- Forçar atualização -->
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-    <title>Simular Nota Acafe Medicina</title>
-    <script src="calc.js"></script>
-    <script src="data.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTEP3VH6EM"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+    <!-- Favicons -->
+    <link href="./Library/Images/raposas.ico" rel="icon">
 
-        gtag('config', 'G-VTEP3VH6EM');
-    </script>
+    <!-- Vendor CSS Files -->
+    <link href="./Library/Files/templatemo-misc.css" rel="stylesheet">
+    <link href="./Library/Files/templatemo-main.css" rel="stylesheet">
+
+    <link href="./Library/Files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Library/Files/icofont.min.css" rel="stylesheet">
+    <link href="./Library/Files/boxicons.min.css" rel="stylesheet">
+    <link href="./Library/Files/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="./Library/Files/style.css" rel="stylesheet">
+
+    <style type="text/css">.fancybox-margin{margin-right:17px;}</style></head>
     <style>
         .w-35 {
             width: 35% !important;
@@ -45,59 +39,186 @@
 
         }
     </style>
-</head>
+    <script src="./Library/Files/calc.js"></script>
+    <script src="./Library/Files/data.js"></script>
 
-<body>
-    <div class="container h-100">
-        <div class="row h-100 justify-content-center align-items-center">
-            <div class="col-12">
-                <div class="form-group text-center">
-                    <div class="w-35 w-md-100 mx-auto">
-                        <h1 class="h3 mb-3 font-weight-normal">Simulador de Nota Acafe Medicina</h1>
-                        <input type="number" class="form-control score" id="portugues" placeholder="Português" min="0"
-                            max="14">
-                        <input type="number" class="form-control score" id="ling_estrangeira"
-                            placeholder="Língua Estrangeira" min="0" max="7">
-                        <input type="number" class="form-control score" id="fisica" placeholder="Física" min="0"
-                            max="10">
-                        <input type="number" class="form-control score" id="matematica" placeholder="Matemática" min="0"
-                            max="7">
-                        <input type="number" class="form-control score" id="historia" placeholder="História" min="0"
-                            max="7">
-                        <input type="number" class="form-control score" id="biologia" placeholder="Biologia" min="0"
-                            max="7">
-                        <input type="number" class="form-control score" id="geografia" placeholder="Geografia" min="0"
-                            max="7">
-                        <input type="number" class="form-control score" id="quimica" placeholder="Química" min="0"
-                            max="7">
-                        <input type="number" class="form-control score" id="redacao" placeholder="Redação" min="0"
-                            max="10">
-                        <button type="button" class="btn btn-success mt-3" onclick="simularScore()">Calcular</button>
-                    </div>
-                    <div id="result_div" class="w-50 w-md-100" style="display: none;">
-                        <p class="mt-3" id="result_text"></p>
-                        <p>
-                            *Valores estimados através de dados de vestibulares passados, estes escores podem ser
-                            aproximações e não necessariamente refletem no resultado final.
-                        </p>
-                    </div>
-                    <div id="result_div" class="w-50 w-md-100" style="display: inline-block;">
-                        <p class="mt-3" id="result_text"></p>
-                        <p>
-                            *Valores estimados através de dados de vestibulares passados, estes escores podem ser
-                            aproximações e não necessariamente refletem o resultado final.
-                        </p>
-                    </div>
-                    <div id="result_div" class="w-50 w-md-100" style="display: inline-block;">
-                        <p class="mt-3" id="result_text"></p>
-                        <p>
-                            A classificação se dá pelo seguinte cálculo:
-                        </p>
+<body data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="0">
+
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <!-- logo -->
+            <h1 class="logo mr-auto">
+                <a href="#main"><img src="./Library/Images/raposas.png"></a> 
+            </h1>
+
+            <!-- menu -->
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li><a href="#main" class="d-lg-block">ÍNDICE</a></li>
+                    <li><a href="#main" class="d-lg-block">SIMULADOR</a></li>
+                </ul>
+            </nav>
+            <!-- .nav-menu -->
+            
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <main id="main">
+        <!-- ======= AGENDA ======= -->
+        <section id="agenda" class="about section-bg" style="padding-top: 40px"></section>
+        <!-- END AGENDA-->
+        <!-- ======= Simulador ACAFE ======= -->
+        <section id="obras_acafe" class="why-us">
+            <div class="container h-100">
+                <div class="row h-100 justify-content-center align-items-center">
+                    <div class="col-12">
+                        <div class="form-group text-center">
+                            <div class="w-35 w-md-100 mx-auto">
+                                <h1 class="h3 mb-3 font-weight-normal">Simulador - ACAFE Medicina</h1>
+                                <input type="number" class="form-control score" id="portugues" placeholder="Português" min="0"
+                                    max="14">
+                                <input type="number" class="form-control score" id="ling_estrangeira"
+                                    placeholder="Língua Estrangeira" min="0" max="7">
+                                <input type="number" class="form-control score" id="fisica" placeholder="Física" min="0"
+                                    max="10">
+                                <input type="number" class="form-control score" id="matematica" placeholder="Matemática" min="0"
+                                    max="7">
+                                <input type="number" class="form-control score" id="historia" placeholder="História" min="0"
+                                    max="7">
+                                <input type="number" class="form-control score" id="biologia" placeholder="Biologia" min="0"
+                                    max="7">
+                                <input type="number" class="form-control score" id="geografia" placeholder="Geografia" min="0"
+                                    max="7">
+                                <input type="number" class="form-control score" id="quimica" placeholder="Química" min="0"
+                                    max="7">
+                                <input type="number" class="form-control score" id="redacao" placeholder="Redação" min="0"
+                                    max="10">
+                                <button type="button" class="btn btn-success mt-3" onclick="simularScore()">Calcular</button>
+                            </div>
+                            <div id="result_div" class="w-50 w-md-100" style="display: none;">
+                                <p class="mt-3" id="result_text"></p>
+                                <p>
+                                    *Valores estimados através de dados de vestibulares passados, estes escores podem ser
+                                    aproximações e não necessariamente refletem no resultado final.
+                                </p>
+                            </div>
+                            <div id="result_div" class="w-50 w-md-100" style="display: inline-block;text-align:justify">
+                                <p class="mt-3" id="result_text"></p>
+                                <p>
+                                    *O Escore Médio corresponde a média de todos os escores calculados.
+                                </p>
+                                <p>
+                                    **O Escore Médio Triplo considera apenas o escore das últimas 3 provas.
+                                </p>
+                                <p>
+                                    ***A média de acertos classificáveis corresponde a média entre as médias de acertos dos
+                                    últimos classificados em primeira chamada, sem considerar a nota da redação, das
+                                    3 últimas provas disponíveis no site da ACAFE.
+                                </p>
+                                <p>
+                                    ****A Chance de Aprovação é calculada comparando o seu número de acertos com a 
+                                    média de acertos classificáveis.
+                                </p>
+                                <p>
+                                    *****Os valores são estimados através de dados de vestibulares passados, 
+                                    estes escores são aproximações e não necessariamente refletem o resultado final.
+                                </p>
+                            </div>
+
+                            <h1 class="h3 mb-3 font-weight-normal">Como o simulador funciona?</h1>
+                            <div id="result_div" class="w-50 w-md-100" style="display: inline-block;text-align:left">
+                                <p class="mt-3" id="result_text"></p>
+                                <p>
+                                    A fórmula para classificação dos candidatos no curso será o somatório dos escores
+                                    transformados das disciplinas, incluída a redação:
+                                </p>
+                            </div>
+                            <div id="result_div" class="w-50 w-md-100" style="display: inline-block;">
+                                <img src="./Library/Images/som_acafe.png">
+                            </div>
+                            <div id="result_div" class="w-50 w-md-100" style="display: inline-block;text-align:left">
+                                <p class="mt-3" id="result_text"></p>
+                                <p>
+                                    O escore transformado das disciplinas será calculado pela seguinte fórmula:
+                                </p>
+                            </div>
+                            <div id="result_div" class="w-50 w-md-100" style="display: inline-block;">
+                                <img src="./Library/Images/ETdisc_acafe.png">
+                            </div>
+                            <div id="result_div" class="w-50 w-md-100" style="display: inline-block;text-align:left">
+                                <p class="mt-3" id="result_text"></p>
+                                <p>
+                                    Onde:
+                                </p>
+                                <ul>
+                                    <li><b>•ETdisc</b> = Escore transformado da disciplina; </li>
+                                    <li><b>•Adisc</b> = Número de acertos na disciplina (considera-se a redação como disciplina);</li>
+                                    <li><b>•Mdisc</b> = Média da disciplina;</li>
+                                    <li><b>•Ddisc</b> = Desvio padrão da disciplina;</li>
+                                    <li><b>•P</b> = Número de questões da disciplina dividido por 73, considerando-se
+                                        63 questões objetivas, acrescido da nota máxima da redação (10,0).
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</body>
+        </section>
+        <!-- End Simulador ACAFE-->
+    </main>
+    <!-- End #main -->
 
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <!-- barra final -->
+        <div class="container d-md-flex py-4">
+            <div class="mr-md-auto text-center text-md-left">
+                <div class="copyright">
+                    Vulpes Bibliotheca © 2023. Todos os direitos liberados. <br><small><strong><span>Desenvolvido por <a target="_blank" href="https://github.com/vulpesbibliotheca">Vulpes Bibliotheca</a></span></strong></small>.
+                </div>
+            </div>
+            <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                <a target = "_blank" href="https://github.com/vulpesbibliotheca" ><img src="./Library/Images/icons8-github-16.png"></a>
+                <a href="#contato" ><img src="./Library/Images/icons8-mail-16.png"></a>
+                <div class="content">
+                    <div class="details"> 
+                        <p>Versão 1.0.2</p>
+                    </div>
+               </div>
+                <a href="#ajuda" class="show"><img src="./Library/Images/icons8-ponto-de-interrogação-16.png"></a>
+            </div>
+        </div>
+        <!-- end barra final -->
+    </footer>
+    <!-- End Footer -->
+
+    <a href="./Library/Images/icons8-devolver-o-livro-ios-16-16.png" class="back-to-top">   
+        <i><img src="./Library/Images/icons8-seta-para-recolher-32.png"></i>
+    </a>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="./Library/Files/jquery.min.js"></script>
+    <script src="./Library/Files/jquery.easing.min.js"></script>
+    <script src="./Library/Files/jquery.waypoints.min.js"></script>
+    <script src="./Library/Files/counterup.min.js"></script>
+    <script src="./Library/Files/owl.carousel.min.js"></script>
+    <script src="./Library/Files/aos.js"></script>
+
+    <script src="./Library/Files/plugins.js"></script>
+    <script src="./Library/Files/custom.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="./Library/Files/main.js"></script><nav class="mobile-nav d-lg-none">
+                <ul>
+                    <li><a href="#main" class="d-lg-block">ÍNDICE</a></li>
+                    <li><a href="#main" class="d-lg-block">SIMULADOR</a></li>
+                </ul>
+            </nav><div class="mobile-nav-overly"></div>
+    </body>
 </html>
