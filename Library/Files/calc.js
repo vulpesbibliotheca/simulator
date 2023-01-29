@@ -122,21 +122,30 @@ function simularScore() {
                 chance_aprovacao = 'Possível';
             } else { 
                 if(totalAcertos == (media_classificados - 3)){
-                    chance_aprovacao = 'Provável';
+                    chance_aprovacao = 'Possível';
                 } else {
-                    if(totalAcertos == media_classificados){
+                    if(totalAcertos == (media_classificados - 2)){
                         chance_aprovacao = 'Provável';
                     } else {
-                        if(totalAcertos == (media_classificados + 1)){
+                        if(totalAcertos == (media_classificados - 1)){
                             chance_aprovacao = 'Provável';
                         } else {
-                            chance_aprovacao = 'Muito provável';
-                        }
-                    } 
+                            if (totalAcertos == media_classificados){
+                            chance_aprovacao = 'Provável';
+                        } else {
+                            if(totalAcertos == (media_classificados + 1)){
+                                chance_aprovacao = 'Muito provável';
+                            } else {
+                                chance_aprovacao = 'Muito provável';
+                                }
+                            }
+                        } 
+                    }
                 }
             }
         }
     }
+
     result_text = `<br>Chance de Aprovação: ${chance_aprovacao}` + result_text
 
     var result_display = document.getElementById("result_div");
